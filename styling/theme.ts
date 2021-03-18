@@ -15,6 +15,15 @@ const theme = createMuiTheme({
 		background: {
 			default: "#fff"
 		}
+	},
+	overrides: {
+		MuiCssBaseline: {
+			"@global": {
+				html: {
+					overflow: "hidden"
+				}
+			}
+		}
 	}
 });
 

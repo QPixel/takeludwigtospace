@@ -5,6 +5,7 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 import { Children } from "react";
 import theme from "../styling/theme";
 import { cache } from "./_app";
+// import "../styling/global.css";
 
 const { extractCritical } = createEmotionServer(cache);
 
@@ -13,7 +14,10 @@ export default class MyDocument extends Document {
 		return (
 			<Html lang="en">
 				<Head>
-					<meta name="theme-color" content={theme.palette.primary.main} />
+					<meta
+						name="theme-color"
+						content={theme.palette.primary.main}
+					/>
 					<link
 						rel="stylesheet"
 						href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
@@ -52,31 +56,31 @@ MyDocument.getInitialProps = async (ctx) => {
 	// 2. page.getInitialProps
 	// 3. app.render
 	// 4. page.render
-  
+
 	// Render app and page and get the context of the page with collected side effects.
 	const sheets = new ServerStyleSheets();
 	const originalRenderPage = ctx.renderPage;
-  
+
 	ctx.renderPage = () =>
-	  originalRenderPage({
+		originalRenderPage({
 			enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
-	  });
-  
+		});
+
 	const initialProps = await Document.getInitialProps(ctx);
 	const styles = extractCritical(initialProps.html);
-  
+
 	return {
-	  ...initialProps,
-	  // Styles fragment is rendered after the app and page rendering finish.
-	  styles: [
+		...initialProps,
+		// Styles fragment is rendered after the app and page rendering finish.
+		styles: [
 			...Children.toArray(initialProps.styles),
 			sheets.getStyleElement(),
 			<style
-		  key="emotion-style-tag"
-		  data-emotion={`css ${styles.ids.join(" ")}`}
-		  // eslint-disable-next-line react/no-danger
-		  dangerouslySetInnerHTML={{ __html: styles.css }}
+				key="emotion-style-tag"
+				data-emotion={`css ${styles.ids.join(" ")}`}
+				// eslint-disable-next-line react/no-danger
+				dangerouslySetInnerHTML={{ __html: styles.css }}
 			/>,
-	  ],
+		],
 	};
 };
