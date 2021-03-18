@@ -1,9 +1,10 @@
-import createEmotionServer from '@emotion/server/create-instance';
-import { ServerStyleSheets } from '@material-ui/core/styles';
+import createEmotionServer from "@emotion/server/create-instance";
+import React from "react";
+import { ServerStyleSheets } from "@material-ui/core/styles";
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import { Children } from 'react';
-import theme from '../styling/theme';
-import { cache } from './_app';
+import { Children } from "react";
+import theme from "../styling/theme";
+import { cache } from "./_app";
 
 const { extractCritical } = createEmotionServer(cache);
 
@@ -23,7 +24,7 @@ export default class MyDocument extends Document {
 					<NextScript />
 				</body>
 			</Html>
-		)
+		);
 	}
 }
 
@@ -58,7 +59,7 @@ MyDocument.getInitialProps = async (ctx) => {
   
 	ctx.renderPage = () =>
 	  originalRenderPage({
-		enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
+			enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
 	  });
   
 	const initialProps = await Document.getInitialProps(ctx);
@@ -68,14 +69,14 @@ MyDocument.getInitialProps = async (ctx) => {
 	  ...initialProps,
 	  // Styles fragment is rendered after the app and page rendering finish.
 	  styles: [
-		...Children.toArray(initialProps.styles),
-		sheets.getStyleElement(),
-		<style
+			...Children.toArray(initialProps.styles),
+			sheets.getStyleElement(),
+			<style
 		  key="emotion-style-tag"
-		  data-emotion={`css ${styles.ids.join(' ')}`}
+		  data-emotion={`css ${styles.ids.join(" ")}`}
 		  // eslint-disable-next-line react/no-danger
 		  dangerouslySetInnerHTML={{ __html: styles.css }}
-		/>,
+			/>,
 	  ],
 	};
-  };
+};

@@ -1,10 +1,11 @@
 {
-  "name": "with-typescript",
+  "name": "takeludwigtothemoon",
   "version": "1.0.0",
   "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start",
+	"lint": "eslint --fix .",
     "type-check": "tsc"
   },
   "dependencies": {
@@ -17,12 +18,18 @@
     "install": "^0.13.0",
     "next": "latest",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "twitch": "^4.5.1",
+    "twitch-pubsub-client": "^4.5.1"
   },
   "devDependencies": {
     "@types/node": "^12.12.21",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
+    "eslint": "^7.22.0",
+    "eslint-plugin-react": "^7.22.0",
     "typescript": "4.0"
   },
   "license": "MIT"
