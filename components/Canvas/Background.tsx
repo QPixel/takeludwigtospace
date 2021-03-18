@@ -30,7 +30,7 @@ const useStyles = makeStyles(() => ({
 	},
 }));
 
-const numEmoji = 5;
+const numEmoji = 100;
 const emojis: Array<AnimatedEmoji> = [];
 
 const emojiInstances: IEmoji[] = [
