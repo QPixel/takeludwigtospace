@@ -12,6 +12,8 @@ export interface IEmoji {
 	path: string;
 	timePerFrame: number;
 	numberOfFrames: number;
+	width: number;
+	height: number;
 }
 const useStyles = makeStyles(() => ({
 	root: {
@@ -30,14 +32,16 @@ const useStyles = makeStyles(() => ({
 	},
 }));
 
-const numEmoji = 5;
+const numEmoji = 100;
 const emojis: Array<AnimatedEmoji> = [];
 
 const emojiInstances: IEmoji[] = [
 	{
 		path: "/emoji/pepeD.png",
-		timePerFrame: 15,
+		timePerFrame: 10,
 		numberOfFrames: 6,
+		width: 672,
+		height: 112
 	},
 ];
 const setupEmojis = (

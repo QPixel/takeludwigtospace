@@ -27,7 +27,7 @@ const IndexPage: React.FC = () => {
 	const [mode, setMode] = useState<ModeTypes>(ModeTypes.Normal);
 	return (
 		<Layout title="Take Ludwig to the moon!" className={classes.root}>
-			<Typography variant="h1">Test</Typography>
+			{/* <Typography variant="h1">Test</Typography> */}
 			<Background mode={mode}></Background>
 		</Layout>
 	);
