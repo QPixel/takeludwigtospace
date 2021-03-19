@@ -56,7 +56,28 @@ const emojiInstances: IEmoji[] = [
 		numberOfFrames: 7,
 		width: 784,
 		height: 112
-	}
+	},
+	{
+		path: "/emoji/pepeJAM.png",
+		timePerFrame: 13,
+		numberOfFrames: 4,
+		width: 448,
+		height: 108
+	},
+	{
+		path: "/emoji/catJam.png",
+		timePerFrame: 15,
+		numberOfFrames: 7,
+		width: 784,
+		height: 112
+	},
+	{
+		path: "/emoji/blobDance.png",
+		timePerFrame: 14,
+		numberOfFrames: 80,
+		width: 8960,
+		height: 112
+	},
 ];
 const setupEmojis = (
 	ctx: CanvasRenderingContext2D | null,
