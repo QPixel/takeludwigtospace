@@ -22,11 +22,12 @@ public x: number;
 public y: number;
 constructor ({ctx, width, height, emoji}: IAnimatedEmoji) {
 	this.ctx = ctx;
-	this.x = Math.random() * width;
+	this.x = Math.random() * width * 2.5;
 	this.y = height + Math.random() * 200;
 	this.speedY = Math.random() * 4;
 	this.spritesheet = new Image();
-	this.spritesheet.src = "/emoji/pepeD.png";
+	// console.log(emoji);
+	this.spritesheet.src = emoji.path;
 	// console.log(emoji);
 	this.timePerFrame = emoji.timePerFrame;
 	this.numberOfFrames = emoji.numberOfFrames || 1;
@@ -60,6 +61,9 @@ update(): void {
 		this.draw();
 		this.y -= this.speedY;
 	}
+}		
+fade(): void {
+
 }
 }
 

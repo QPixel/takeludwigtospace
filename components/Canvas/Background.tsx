@@ -32,17 +32,31 @@ const useStyles = makeStyles(() => ({
 	},
 }));
 
-const numEmoji = 100;
+const numEmoji = 50;
 const emojis: Array<AnimatedEmoji> = [];
 
 const emojiInstances: IEmoji[] = [
 	{
 		path: "/emoji/pepeD.png",
-		timePerFrame: 10,
+		timePerFrame: 14,
 		numberOfFrames: 6,
 		width: 672,
 		height: 112
 	},
+	{
+		path: "/emoji/ludwigjam.png",
+		timePerFrame: 15,
+		numberOfFrames: 8,
+		width: 896,
+		height: 116
+	},
+	{
+		path: "/emoji/jammies.png",
+		timePerFrame: 15,
+		numberOfFrames: 7,
+		width: 784,
+		height: 112
+	}
 ];
 const setupEmojis = (
 	ctx: CanvasRenderingContext2D | null,
@@ -54,7 +68,7 @@ const setupEmojis = (
 				ctx,
 				width: canvas.width,
 				height: canvas.height,
-				emoji: emojiInstances[0],
+				emoji: emojiInstances[genRandomNumber(0, emojiInstances.length)],
 			})
 		);
 	}
@@ -94,13 +108,13 @@ const Background: React.FC<BackgroundProps> = ({ mode }: BackgroundProps) => {
 				if (emoji.y < 0) {
 					setTimeout(() => {
 						emojis.splice(index, 1);
-					}, 2);
+					}, 30);
 					emojis.push(
 						new AnimatedEmoji({
 							ctx,
 							width: current.width,
 							height: current.height,
-							emoji: emojiInstances[0],
+							emoji: emojiInstances[genRandomNumber(0, emojiInstances.length)],
 						})
 					);
 				}
