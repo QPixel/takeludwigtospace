@@ -1,4 +1,5 @@
-// import React, { ReactElement, useEffect, useRef } from "react";
+// import React from "react";
+
 import { IEmoji } from "./Background";
 
 interface IAnimatedEmoji {
