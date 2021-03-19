@@ -20,6 +20,7 @@ const style = makeStyles(() => ({
 		height: "100%",
 		margin: 0,
 		padding: 0,
+		backgroundColor: "#363d45",
 	},
 }));
 const IndexPage: React.FC = () => {

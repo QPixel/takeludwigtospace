@@ -73,7 +73,7 @@ const emojiInstances: IEmoji[] = [
 	},
 	{
 		path: "/emoji/blobDance.png",
-		timePerFrame: 14,
+		timePerFrame: 1,
 		numberOfFrames: 80,
 		width: 8960,
 		height: 112
@@ -97,7 +97,7 @@ const setupEmojis = (
 const Background: React.FC<BackgroundProps> = ({ mode }: BackgroundProps) => {
 	const classes = useStyles();
 	const canvasRef = useRef<HTMLCanvasElement>(null);
-	const emojiCanvasRef = useRef<HTMLCanvasElement>(null);
+	// const emojiCanvasRef = useRef<HTMLCanvasElement>(null);
 	useEffect(() => {
 		const current = canvasRef.current;
 		if (!current) return;
@@ -107,57 +107,57 @@ const Background: React.FC<BackgroundProps> = ({ mode }: BackgroundProps) => {
 		//  = window.innerWidth;
 		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 		ctx!.fillStyle = "#0df2c9";
-		ctx?.fillRect(0, 0, current.width, current.height);
+		ctx?.fillRect(0, 0, 100, 100);
 
 		window.addEventListener("resize", () => {
 			current.width = window.innerWidth;
 			current.height = window.innerHeight;
 		});
 	});
-	useEffect(() => {
-		const current = emojiCanvasRef.current;
-		if (!current) return;
-		current.width = window.innerWidth;
-		current.height = window.innerHeight;
-		const ctx = current.getContext("2d");
+	// useEffect(() => {
+	// 	const current = emojiCanvasRef.current;
+	// 	if (!current) return;
+	// 	current.width = window.innerWidth;
+	// 	current.height = window.innerHeight;
+	// 	const ctx = current.getContext("2d");
 
-		const animate = () => {
-			ctx?.clearRect(0, 0, current.width, current.height);
-			requestAnimationFrame(animate);
-			emojis.forEach((emoji, index) => {
-				emoji.update();
-				if (emoji.y < 0) {
-					setTimeout(() => {
-						emojis.splice(index, 1);
-					}, 30);
-					emojis.push(
-						new AnimatedEmoji({
-							ctx,
-							width: current.width,
-							height: current.height,
-							emoji: emojiInstances[genRandomNumber(0, emojiInstances.length)],
-						})
-					);
-				}
-			});
-		};
+	// 	const animate = () => {
+	// 		ctx?.clearRect(0, 0, current.width, current.height);
+	// 		requestAnimationFrame(animate);
+	// 		emojis.forEach((emoji, index) => {
+	// 			emoji.update();
+	// 			if (emoji.y < 0) {
+	// 				setTimeout(() => {
+	// 					emojis.splice(index, 1);
+	// 				}, 30);
+	// 				emojis.push(
+	// 					new AnimatedEmoji({
+	// 						ctx,
+	// 						width: current.width,
+	// 						height: current.height,
+	// 						emoji: emojiInstances[genRandomNumber(0, emojiInstances.length)],
+	// 					})
+	// 				);
+	// 			}
+	// 		});
+	// 	};
 
-		setupEmojis(ctx, current);
-		animate();
+	// 	setupEmojis(ctx, current);
+	// 	animate();
 
-		window.addEventListener("resize", () => {
-			current.width = window.innerWidth;
-			current.height = window.innerHeight;
-		});
-	}, []);
+	// 	window.addEventListener("resize", () => {
+	// 		current.width = window.innerWidth;
+	// 		current.height = window.innerHeight;
+	// 	});
+	// }, []);
 	// console.log(mode);
 	return (
 		<div className={classes.root}>
-			<canvas
+			{/* <canvas
 				id="emojis"
 				ref={emojiCanvasRef}
 				className={classes.emojis}
-			/>
+			/> */}
 			<canvas
 				id="background"
 				ref={canvasRef}
