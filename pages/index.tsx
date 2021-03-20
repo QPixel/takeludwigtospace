@@ -3,10 +3,17 @@ import React, { useState } from "react";
 import Layout from "../components/Layout";
 import { Typography } from "@material-ui/core";
 import Background from "../components/Canvas/Background";
+import RocketShip from "../components/RocketShip";
 // import Typography from ""
 
 export enum ModeTypes {
 	Normal,
+	NoEmotes,
+	NoGifs,
+	NyanLud,
+	LoPunny,
+	NitroLud,
+	OmegaLu
 }
 
 const style = makeStyles(() => ({
@@ -19,15 +26,15 @@ const style = makeStyles(() => ({
 		width: "100%",
 		height: "100%",
 		margin: 0,
-		padding: 0,
 	},
 }));
 const IndexPage: React.FC = () => {
 	const classes = style();
-	const [mode, setMode] = useState<ModeTypes>(ModeTypes.Normal);
+	const [mode, setMode] = useState<ModeTypes>(ModeTypes.NoGifs);
 	return (
 		<Layout title="Take Ludwig to the moon!" className={classes.root}>
 			{/* <Typography variant="h1">Test</Typography> */}
+			<RocketShip mode={mode} />
 			<Background mode={mode}></Background>
 		</Layout>
 	);
