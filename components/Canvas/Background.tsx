@@ -2,9 +2,10 @@ import React, { ReactElement, useEffect, useRef } from "react";
 import { ModeTypes } from "../../pages";
 import { makeStyles } from "@material-ui/core";
 import { genRandomNumber } from "../../src/Util";
-import EmojiList, { IEmoji } from "./EmojiList";
-import AnimatedEmojiV2 from "./AnimatedEmojiV2";
+import { IEmoji, GifEmojis, RegularEmojis } from "./EmojiList";
+import AniamtedEmoji from "./AnimatedEmojiV2";
 import { ClassNames } from "@emotion/react";
+import RegularEmoji from "./RegularEmoji";
 interface BackgroundProps {
 	mode: ModeTypes;
 }
@@ -24,7 +25,7 @@ const useStyles = makeStyles(() => ({
 	},
 	background: {
 		backgroundImage:
-			"linear-gradient(to right top, #051937, #14203c, #1f2740, #292e45, #33364a)",
+			"linear-gradient(to bottom, #051937, #14203c, #1f2740, #292e45, #2a2c3c)",
 		height: "100%",
 		zIndex: -3,
 		position: "absolute",
@@ -32,24 +33,38 @@ const useStyles = makeStyles(() => ({
 	},
 }));
 
-const numEmoji = 20;
-const emojis: Array<AnimatedEmojiV2> = [];
+const numEmoji = 200;
+const emojis: Array<AniamtedEmoji | RegularEmoji> = [];
 
 const setupEmojis = (
 	width: number,
 	height: number,
 	ctx: CanvasRenderingContext2D | null,
-	list: ReadonlyArray<IEmoji>
+	list: ReadonlyArray<IEmoji>,
+	mode: ModeTypes
 ) => {
-	for (let i = 0; i < numEmoji; i += 1) {
-		emojis.push(
-			new AnimatedEmojiV2({
-				width,
-				height,
-				ctx,
-				emoji: list[genRandomNumber(0, EmojiList.length)],
-			})
-		);
+	if (mode === ModeTypes.NoGifs) {
+		for (let i = 0; i < numEmoji; i += 1) {
+			emojis.push(
+				new RegularEmoji({
+					width,
+					height,
+					ctx,
+					emoji: list[genRandomNumber(0, RegularEmojis.length)],
+				})
+			);
+		}
+	} else {
+		for (let i = 0; i < numEmoji; i += 1) {
+			emojis.push(
+				new AniamtedEmoji({
+					width,
+					height,
+					ctx,
+					emoji: list[genRandomNumber(0, GifEmojis.length)],
+				})
+			);
+		}
 	}
 };
 const EmojiComponent: React.FC<BackgroundProps> = ({
@@ -58,7 +73,7 @@ const EmojiComponent: React.FC<BackgroundProps> = ({
 	const emojiCanvasRef = useRef<HTMLCanvasElement>(null);
 	const classes = useStyles();
 	const emojilist: ReadonlyArray<IEmoji> =
-		mode == ModeTypes.Normal ? EmojiList : EmojiList;
+		mode == ModeTypes.Normal ? GifEmojis : RegularEmojis;
 	useEffect(() => {
 		const current = emojiCanvasRef.current;
 		if (!current) return;
@@ -71,24 +86,39 @@ const EmojiComponent: React.FC<BackgroundProps> = ({
 			emojis.forEach((emoji, index) => {
 				emoji.update();
 				// console.log(emoji.id);
-				if (emoji.y > 2000) {
+				if (emoji.y > 1500) {
 					setTimeout(() => {
 						emojis.splice(index, 1);
 					}, 30);
 					emojis.push(
-						new AnimatedEmojiV2({
-							width: current.width,
-							height: current.height,
-							emoji:
-								EmojiList[genRandomNumber(0, EmojiList.length)],
-							ctx,
-						})
+						mode === ModeTypes.Normal
+							? new AniamtedEmoji({
+								width: current.width,
+								height: current.height,
+								emoji:
+										GifEmojis[
+											genRandomNumber(0, GifEmojis.length)
+										],
+								ctx,
+							})
+							: new RegularEmoji({
+								width: current.width,
+								height: current.height,
+								emoji:
+										RegularEmojis[
+											genRandomNumber(
+												0,
+												RegularEmojis.length
+											)
+										],
+								ctx,
+							})
 					);
 				}
 			});
 		};
 
-		setupEmojis(current.width, current.height, ctx, emojilist);
+		setupEmojis(current.width, current.height, ctx, emojilist, mode);
 		animate();
 
 		window.addEventListener("resize", () => {
@@ -105,7 +135,11 @@ const Background: React.FC<BackgroundProps> = ({
 	const classes = useStyles();
 	return (
 		<div className={classes.root}>
-			<EmojiComponent mode={mode} />
+			{mode === ModeTypes.NoEmotes ? (
+				<></>
+			) : (
+				<EmojiComponent mode={mode} />
+			)}
 			<div id="background" className={classes.background}></div>
 		</div>
 	);

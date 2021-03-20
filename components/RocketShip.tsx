@@ -22,16 +22,17 @@ const useStyles = makeStyles({
 		verticalAlign: "middle",
 		position: "absolute",
 		top: "200px",
-		left: "175px",
+		left: "220px",
 	},
 	rocketship: {
 		display: "block !important",
 		width: "282.8px",
+		transformOrigin: "center center",
 	},
 	face: {
 		position: "absolute",
 		top: "75px",
-		left: "75px",
+		left: "90px",
 	},
 });
 
@@ -43,15 +44,22 @@ const RocketShip: React.FC<RocketShipProps> = ({
 		<Box className={classes.root}>
 			<div id="rocket" className={classes.rocketshipoutside}>
 				<motion.div
-					animate={{ x: 150, rotateZ: 14, y: 75 }}
+					animate={{
+						x: [0, 0.5, 2, 1, 0.4, 4, 0, 8, 2.5, 3],
+						rotateZ: [0.5, 4, 1.5, 6, 2, 0.7],
+						y: 20,
+					}}
 					transition={{
 						repeatType: "mirror",
+						repeatDelay: 0,
 						repeat: Infinity,
 						type: "tween",
-						duration: 0.12222222,
+						ease: "easeInOut",
+						duration: 0.1,
 					}}
 					className={classes.rocketship}
 				>
+					{/* <div className={classes.rocketship}> */}
 					<div className={classes.face}>
 						<Image width={112} height={112} src="/face.png"></Image>
 					</div>
@@ -94,6 +102,7 @@ const RocketShip: React.FC<RocketShipProps> = ({
 							fill="#eb3044"
 						/>
 					</svg>
+					{/* </div> */}
 				</motion.div>
 			</div>
 		</Box>

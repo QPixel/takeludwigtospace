@@ -24,7 +24,7 @@ export default class AnimatedEmojiV2 {
 	constructor({ width, height, emoji, ctx }: IAnimatedEmoji) {
 		this.ctx = ctx;
 		// Position Emoji at a random spot on the canvas
-		this.x = Math.random() * width;
+		this.x = Math.random() * width - 20;
 		this.y = height + Math.random() * -3000;
 		// this.id = v4();
 		// Random speed times 4 (can be change)

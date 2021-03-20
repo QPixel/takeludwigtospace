@@ -8,6 +8,12 @@ import RocketShip from "../components/RocketShip";
 
 export enum ModeTypes {
 	Normal,
+	NoEmotes,
+	NoGifs,
+	NyanLud,
+	LoPunny,
+	NitroLud,
+	OmegaLud
 }
 
 const style = makeStyles(() => ({
@@ -24,7 +30,7 @@ const style = makeStyles(() => ({
 }));
 const IndexPage: React.FC = () => {
 	const classes = style();
-	const [mode, setMode] = useState<ModeTypes>(ModeTypes.Normal);
+	const [mode, setMode] = useState<ModeTypes>(ModeTypes.NoGifs);
 	return (
 		<Layout title="Take Ludwig to the moon!" className={classes.root}>
 			{/* <Typography variant="h1">Test</Typography> */}
