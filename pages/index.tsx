@@ -1,9 +1,9 @@
 import { makeStyles } from "@material-ui/core";
 import React, { useState } from "react";
 import Layout from "../components/Layout";
-import { Typography } from "@material-ui/core";
 import Background from "../components/Canvas/Background";
 import RocketShip from "../components/RocketShip";
+import { genRandomNumber } from "../src/Util";
 // import Typography from ""
 
 export enum ModeTypes {
@@ -15,7 +15,13 @@ export enum ModeTypes {
 	NitroLud,
 	OmegaLu
 }
-
+export const titlePlanets: string[] = [
+	"Space",
+	"the Moon",
+	"the Sun",
+	"Mars",
+	"Andromeda",
+];
 const style = makeStyles(() => ({
 	root: {
 		display: "block",
@@ -32,7 +38,7 @@ const IndexPage: React.FC = () => {
 	const classes = style();
 	const [mode, setMode] = useState<ModeTypes>(ModeTypes.NoGifs);
 	return (
-		<Layout title="Take Ludwig to the moon!" className={classes.root}>
+		<Layout title={`${titlePlanets[genRandomNumber(0, titlePlanets.length)]}!`} className={classes.root}>
 			{/* <Typography variant="h1">Test</Typography> */}
 			<RocketShip mode={mode} />
 			<Background mode={mode}></Background>
