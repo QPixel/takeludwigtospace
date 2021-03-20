@@ -38,7 +38,7 @@ const IndexPage: React.FC = () => {
 	const classes = style();
 	const [mode, setMode] = useState<ModeTypes>(ModeTypes.NoGifs);
 	return (
-		<Layout title={`${titlePlanets[genRandomNumber(0, titlePlanets.length)]}!`} className={classes.root}>
+		<Layout title={`🚀 Take ludwig to ${titlePlanets[genRandomNumber(0, titlePlanets.length)]}!`} className={classes.root}>
 			{/* <Typography variant="h1">Test</Typography> */}
 			<RocketShip mode={mode} />
 			<Background mode={mode}></Background>
