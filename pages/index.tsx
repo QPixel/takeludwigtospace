@@ -4,6 +4,7 @@ import Layout from "../components/Layout";
 import Background from "../components/Canvas/Background";
 import RocketShip from "../components/RocketShip";
 import { genRandomNumber } from "../src/Util";
+import Loading from "../components/Loading";
 // import Typography from ""
 
 export enum ModeTypes {
@@ -36,13 +37,23 @@ const style = makeStyles(() => ({
 }));
 const IndexPage: React.FC = () => {
 	const classes = style();
+	const [isLoading, setLoading] = useState<boolean>(true);
 	const [mode, setMode] = useState<ModeTypes>(ModeTypes.NoGifs);
+	setTimeout(() => {
+		setLoading(false);
+	}, 2000);
 	return (
-		<Layout title={`🚀 Take ludwig to ${titlePlanets[genRandomNumber(0, titlePlanets.length)]}!`} className={classes.root}>
-			{/* <Typography variant="h1">Test</Typography> */}
-			<RocketShip mode={mode} />
-			<Background mode={mode}></Background>
-		</Layout>
+		<>
+			{
+				isLoading ? <Loading /> :
+					<Layout title={`🚀 Take ludwig to ${titlePlanets[genRandomNumber(0, titlePlanets.length)]}!`} className={classes.root}>
+						{/* <Typography variant="h1">Test</Typography> */}
+						<RocketShip mode={mode} />
+						<Background mode={mode}></Background>
+					</Layout>
+
+			}
+		</>
 	);
 };
 

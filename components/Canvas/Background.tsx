@@ -4,7 +4,6 @@ import { makeStyles } from "@material-ui/core";
 import { genRandomNumber } from "../../src/Util";
 import { IEmoji, GifEmojis, RegularEmojis } from "./EmojiList";
 import AniamtedEmoji from "./AnimatedEmojiV2";
-import { ClassNames } from "@emotion/react";
 import RegularEmoji from "./RegularEmoji";
 import Stars from "./Stars";
 interface BackgroundProps {
