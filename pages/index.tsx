@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Layout from "../components/Layout";
 import { Typography } from "@material-ui/core";
 import Background from "../components/Canvas/Background";
+import RocketShip from "../components/RocketShip";
 // import Typography from ""
 
 export enum ModeTypes {
@@ -19,8 +20,6 @@ const style = makeStyles(() => ({
 		width: "100%",
 		height: "100%",
 		margin: 0,
-		padding: 0,
-		backgroundColor: "#363d45",
 	},
 }));
 const IndexPage: React.FC = () => {
@@ -29,6 +28,7 @@ const IndexPage: React.FC = () => {
 	return (
 		<Layout title="Take Ludwig to the moon!" className={classes.root}>
 			{/* <Typography variant="h1">Test</Typography> */}
+			<RocketShip mode={mode} />
 			<Background mode={mode}></Background>
 		</Layout>
 	);
