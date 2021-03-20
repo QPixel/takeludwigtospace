@@ -13,10 +13,7 @@ import Loading from "../components/Loading";
 // import "./"
 
 export const cache = createCache({ key: "css", prepend: true });
-const titlePlanets: string[] = [
-	"Space",
-	"the Moon",
-];
+
 export default function App({ Component, pageProps }: AppProps) {
 	const router = useRouter();
 	const [pageLoading, setPageLoading] = useState<boolean>(false);
@@ -35,7 +32,7 @@ export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<CacheProvider value={cache}>
 			<Head>
-				<title>Take Ludwig to {titlePlanets[genRandomNumber(0, titlePlanets.length)]}!</title>
+				<title>Take Ludwig to Space!</title>
 				<meta
 					name="viewport"
 					content="initial-scale=1, width=device-width"
