@@ -136,7 +136,7 @@ const Background: React.FC<BackgroundProps> = ({
 	const classes = useStyles();
 	return (
 		<div className={classes.root}>
-			<Stars />
+			{/* <Stars /> */}
 			{mode === ModeTypes.NoEmotes ? (
 				<></>
 			) : (

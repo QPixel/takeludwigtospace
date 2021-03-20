@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, Typography } from "@material-ui/core";
 import React, { useState } from "react";
 import Layout from "../components/Layout";
 import Background from "../components/Canvas/Background";
@@ -25,7 +25,7 @@ export const titlePlanets: string[] = [
 ];
 const style = makeStyles(() => ({
 	root: {
-		display: "block",
+		display: "grid",
 		flexDirection: "column",
 		justifyContent: "center",
 		alignItems: "center",
@@ -34,6 +34,12 @@ const style = makeStyles(() => ({
 		height: "100%",
 		margin: 0,
 	},
+	title: {
+		color: "white",
+		gridArea: "center",
+		marginTop: "50%"
+		// alignSelf: "center",
+	}
 }));
 const IndexPage: React.FC = () => {
 	const classes = style();
@@ -47,7 +53,7 @@ const IndexPage: React.FC = () => {
 			{
 				isLoading ? <Loading /> :
 					<Layout title={`🚀 Take ludwig to ${titlePlanets[genRandomNumber(0, titlePlanets.length)]}!`} className={classes.root}>
-						{/* <Typography variant="h1">Test</Typography> */}
+						<Typography variant="h1" className={classes.title}>🚀 Coming Soon 🚀</Typography>
 						<RocketShip mode={mode} />
 						<Background mode={mode}></Background>
 					</Layout>
