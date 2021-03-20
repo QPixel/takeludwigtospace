@@ -13,7 +13,7 @@ export enum ModeTypes {
 	NyanLud,
 	LoPunny,
 	NitroLud,
-	OmegaLud
+	OmegaLu
 }
 
 const style = makeStyles(() => ({
