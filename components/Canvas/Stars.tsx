@@ -115,7 +115,7 @@ const Stars: React.FC = (): ReactElement => {
 		const ctx = canvas?.getContext("2d");
 		if (!ctx || !canvas) return;
 		const stars: Star[] = [];
-		const StarCount = (window.innerWidth / window.innerHeight / 8) * 4;
+		const StarCount = (window.innerWidth + window.innerHeight / 8);
 		console.log(StarCount);
 		const resize = () => {
 			scale = window.devicePixelRatio || 1;

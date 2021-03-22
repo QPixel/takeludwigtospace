@@ -33,10 +33,8 @@ const loadingPhrases = [
 
 const Loading: React.FC = (): ReactElement => {
 	const classes = useStyles();
-	let phrase = loadingPhrases[genRandomNumber(0, loadingPhrases.length)];
-	useEffect(() => {
-		phrase = loadingPhrases[genRandomNumber(0, loadingPhrases.length)];
-	}, []);
+	const phrase = loadingPhrases[genRandomNumber(0, loadingPhrases.length)];
+	
 	return (
 		<div className={classes.root}>
 			<div className={classes.loadingContainer}>

@@ -1,6 +1,7 @@
 import { Button, Card, CardActions, CardContent, Grid, makeStyles, Typography } from "@material-ui/core";
 import React, { ReactElement, useEffect, useState } from "react";
 import Audio, { ISong, AudioState } from "./Audio";
+import Credits from "./Credits";
 import songList from "./SongList";
 
 const useStyles = makeStyles((theme) => ({
@@ -19,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
 		[theme.breakpoints.down("md")]: {
 			position: "fixed",
 			bottom: "1px",
-			height: "28%"
 		}
 	},
 	title: {
@@ -41,6 +41,12 @@ const InformationCard: React.FC = (): ReactElement => {
 		currentlyPlaying: 0,
 		upNext: 1
 	});
+	const [hasClicked, setHasClicked] = useState<boolean>(false);
+	const [dialogOpen, setDialogOpen] = useState<boolean>(false);
+
+	const setDialog = () => {
+		setDialogOpen(!dialogOpen);
+	};
 
 	// let seconds = "0";
 	const initalTime = (new Date()).getTime();
@@ -49,7 +55,17 @@ const InformationCard: React.FC = (): ReactElement => {
 		setSeconds(parseFloat(difference).toFixed(2));
 	};
 	useEffect(() => {
+		const onClick = () => {
+			setHasClicked(true);
+		};
+		window.onclick = onClick;
+		window.ontouchstart = onClick;
 		setInterval(updateSW, 10);
+
+		return () => {
+			window.onclick = null;
+			window.ontouchstart = null;
+		};
 	},[]);
 	const getNextSong = () => {
 		const upnext = audioState.upNext;
@@ -68,22 +84,29 @@ const InformationCard: React.FC = (): ReactElement => {
 	};
 	return (
 		<>
+			<Credits onClose={setDialog} open={dialogOpen}/>
 			<Card className={classes.card}>
 				<CardContent>
 					<Typography variant="h1" className={classes.title} color="textSecondary" gutterBottom>
 								You've been taking Ludwig to space for {seconds} seconds.
 					</Typography>
-					<Typography variant="body2" component="p" className={classes.subTitle} gutterBottom>
-						<span style={{fontWeight: "bold"}}> Currently Playing: </span>{songList[audioState.currentlyPlaying].title} by {songList[audioState.currentlyPlaying].artist}
-					</Typography>
+					{
+						hasClicked ?
+							<Typography variant="body2" component="p" className={classes.subTitle} gutterBottom>
+								<span style={{fontWeight: "bold"}}> Currently Playing: </span>{songList[audioState.currentlyPlaying].title} by {songList[audioState.currentlyPlaying].artist}
+							</Typography>
+							:	
+							<Typography>
+								<span style={{fontWeight: "bold"}}> Currently Playing: Nothing! Click or tap the screen to start playing music! </span>
+							</Typography>
+					}
 				</CardContent>
 				<CardActions>
 					<Button size="medium" color="primary" onClick={changeSong}>Skip Song</Button>
-					<Button size="medium" color="primary">Share</Button>
-					<Button size="medium" color="primary">Credits</Button>
+					<Button size="medium" color="primary" onClick={setDialog}>Credits</Button>
 				</CardActions>
 			</Card>
-			<Audio onEnded={changeSong} audioState={audioState} songList={songList} />
+			<Audio onEnded={changeSong} audioState={audioState} songList={songList} playing={hasClicked}/>
 		</>
 	);
 	// return <Card className={classes.root}></Card>;

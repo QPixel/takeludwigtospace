@@ -18,17 +18,18 @@ export interface AudioState {
 interface AudioProps {
 	onEnded: () => void;
 	audioState: AudioState;
-	songList: ISong[]
+	songList: ISong[];
+	playing: boolean;
 }
 
-const Audio: React.FC<AudioProps> = ({onEnded, audioState, songList}: AudioProps): ReactElement => {	
+const Audio: React.FC<AudioProps> = ({onEnded, audioState, songList, playing}: AudioProps): ReactElement => {	
 	const style: React.CSSProperties = {
 		width: 0,
 		height: 0
 	};
 
 	return (
-		<ReactPlayer onEnded={onEnded} width="0" height="0" url={songList[audioState.currentlyPlaying].src} playing config={{
+		<ReactPlayer onEnded={onEnded} width="0" height="0" url={songList[audioState.currentlyPlaying].src} playing={playing} config={{
 			file: {
 				forceAudio: true
 			}
