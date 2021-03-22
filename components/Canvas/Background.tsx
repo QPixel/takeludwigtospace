@@ -87,10 +87,10 @@ const EmojiComponent: React.FC<BackgroundProps> = ({
 			emojis.forEach((emoji, index) => {
 				emoji.update();
 				// console.log(emoji.id);
-				if (emoji.y > 1500) {
+				if (emoji.y > 1300) {
 					setTimeout(() => {
 						emojis.splice(index, 1);
-					}, 30);
+					}, 10);
 					emojis.push(
 						mode === ModeTypes.Normal
 							? new AniamtedEmoji({
@@ -117,8 +117,8 @@ const EmojiComponent: React.FC<BackgroundProps> = ({
 					);
 				}
 			});
+			console.log(emojis.length);
 		};
-
 		setupEmojis(current.width, current.height, ctx, emojilist, mode);
 		animate();
 
@@ -126,7 +126,7 @@ const EmojiComponent: React.FC<BackgroundProps> = ({
 			current.width = window.innerWidth;
 			current.height = window.innerHeight;
 		});
-	});
+	}, []);
 	return <canvas ref={emojiCanvasRef} className={classes.emojis} />;
 };
 
