@@ -7,10 +7,18 @@ export interface RocketShipProps {
 	mode: ModeTypes;
 }
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
 	root: {
 		alignSelf: "start",
-		marginLeft: "200px"
+		height: "680px",
+		[theme.breakpoints.up("lg")]: {
+			marginLeft: "200px",
+			marginTop: "120px",
+		},
+		[theme.breakpoints.down("md")]: {
+			marginLeft: "50px",
+			marginTop: "20px"
+		}
 	},
 	rocketship: {
 
@@ -20,7 +28,8 @@ const useStyles = makeStyles({
 		top: "75px",
 		left: "90px",
 	},
-});
+	
+}));
 
 const RocketShip: React.FC<RocketShipProps> = ({
 	mode,

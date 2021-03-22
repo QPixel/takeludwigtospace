@@ -9,10 +9,17 @@ const useStyles = makeStyles((theme) => ({
 	card: {
 		marginTop: "auto",
 		backgroundColor: "white",
-	},
-	grid: {
-		color: "white",
-		zIndex: 2
+		zIndex: 2,
+		[theme.breakpoints.up("lg")]: {
+			position: "fixed",
+			right: "8rem",
+			bottom: "8rem",
+			maxWidth: "650px"
+		},
+		[theme.breakpoints.down("md")]: {
+			position: "fixed",
+			bottom: "1px"
+		}
 	},
 	title: {
 		fontSize: 23,
@@ -60,30 +67,22 @@ const InformationCard: React.FC = (): ReactElement => {
 	};
 	return (
 		<>
-			<Grid container direction="column" className={classes.grid} item lg={5}>
-				<Grid item
-					container
-					direction="column"
-					alignItems="flex-end"
-					justify="flex-end">
-					<Card className={classes.card}>
-						<CardContent>
-							<Typography variant="h1" className={classes.title} color="textSecondary" gutterBottom>
+			<Card className={classes.card}  md={3}>
+				<CardContent>
+					<Typography variant="h1" className={classes.title} color="textSecondary" gutterBottom>
 								You've been taking Ludwig to space for {seconds} seconds.
-							</Typography>
-							<Typography variant="body2" component="p" className={classes.subTitle} gutterBottom>
-								<span style={{fontWeight: "bold"}}> Currently Playing: </span>{songList[audioState.currentlyPlaying].title} by {songList[audioState.currentlyPlaying].artist}
-							</Typography>
-						</CardContent>
-						<CardActions>
-							<Button size="medium" color="primary" onClick={changeSong}>Skip Song</Button>
-							<Button size="medium" color="primary">Share</Button>
-							<Button size="medium" color="primary">Credits</Button>
-						</CardActions>
-					</Card>
-				</Grid>
-				<Audio onEnded={changeSong} audioState={audioState} songList={songList} />
-			</Grid> 
+					</Typography>
+					<Typography variant="body2" component="p" className={classes.subTitle} gutterBottom>
+						<span style={{fontWeight: "bold"}}> Currently Playing: </span>{songList[audioState.currentlyPlaying].title} by {songList[audioState.currentlyPlaying].artist}
+					</Typography>
+				</CardContent>
+				<CardActions>
+					<Button size="medium" color="primary" onClick={changeSong}>Skip Song</Button>
+					<Button size="medium" color="primary">Share</Button>
+					<Button size="medium" color="primary">Credits</Button>
+				</CardActions>
+			</Card>
+			<Audio onEnded={changeSong} audioState={audioState} songList={songList} />
 		</>
 	);
 	// return <Card className={classes.root}></Card>;

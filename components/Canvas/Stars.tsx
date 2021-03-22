@@ -129,7 +129,7 @@ const Stars: React.FC = (): ReactElement => {
 
 		const update = () => {
 			velocity.tx *= 0.96;
-			velocity.ty += 0.96;
+			velocity.ty *= 0.96;
 
 			velocity.x += (velocity.tx - velocity.x) * 0.8;
 			velocity.y += (velocity.ty - velocity.y) * 0.8;
