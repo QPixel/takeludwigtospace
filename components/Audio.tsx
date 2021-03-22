@@ -6,6 +6,7 @@ export interface ISong {
 	src: string;
 	title: string;
 	artist?: string;
+	variant?: string;
 }
 
 export interface AudioState {

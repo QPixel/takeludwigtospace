@@ -88,9 +88,7 @@ const EmojiComponent: React.FC<BackgroundProps> = ({
 				emoji.update();
 				// console.log(emoji.id);
 				if (emoji.y > 1300) {
-					setTimeout(() => {
-						emojis.splice(index, 1);
-					}, 10);
+					emojis.splice(index, 1);
 					emojis.push(
 						mode === ModeTypes.Normal
 							? new AniamtedEmoji({
@@ -117,7 +115,7 @@ const EmojiComponent: React.FC<BackgroundProps> = ({
 					);
 				}
 			});
-			console.log(emojis.length);
+			// console.log(emojis.length);
 		};
 		setupEmojis(current.width, current.height, ctx, emojilist, mode);
 		animate();

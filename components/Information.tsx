@@ -1,13 +1,12 @@
 import { Button, Card, CardActions, CardContent, Grid, makeStyles, Typography } from "@material-ui/core";
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import Audio, { ISong, AudioState } from "./Audio";
+import songList from "./SongList";
 import {StopWatch} from "./Timer";
 const useStyles = makeStyles((theme) => ({
 	root: {
-
 	},
 	card: {
-		width: "100%",
 		marginTop: "auto",
 		backgroundColor: "white",
 	},
@@ -15,40 +14,38 @@ const useStyles = makeStyles((theme) => ({
 		flexGrow: 1,
 		marginTop: 500,
 		marginLeft: 540,
-		color: "white"
+		color: "white",
+		zIndex: 2
 	},
 	title: {
-		fontSize: 30,
+		fontSize: 23,
 		color: "black",
 		fontWeight: "bold",
 	},
 	subTitle: {
-		fontSize: 20,
+		fontSize: 19,
 		color: "black"
 	}
 }));
 
-const songList: ISong[] = [
-	{
-		src: "/audio/mogul.mp3",
-		title: "MOGUL",
-		artist: "Saint Marshall (Inspired by Ludwig Ahgren & Jonathan Figoli)"
-	},
-	{
-		src: "/audio/sunshine.mp3",
-		title: "Can you feel the sunshine?",
-		artist: "Sonic R"
-	}
-];
-
-
 
 const InformationCard: React.FC = (): ReactElement => {
 	const classes = useStyles();
+	const [seconds, setSeconds] = useState<string>("0");
 	const [audioState, setAudioState] = useState<AudioState>({
 		currentlyPlaying: 0,
 		upNext: 1
 	});
+
+	// let seconds = "0";
+	const initalTime = (new Date()).getTime();
+	const updateSW = () => {
+		const difference = (((new Date()).getTime() - initalTime) / 1000).toString();
+		setSeconds(parseFloat(difference).toFixed(2));
+	};
+	useEffect(() => {
+		setInterval(updateSW, 10);
+	},[]);
 	const getNextSong = () => {
 		const upnext = audioState.upNext;
 		if (upnext + 1 > songList.length - 1 || upnext > songList.length - 1) {
@@ -66,7 +63,7 @@ const InformationCard: React.FC = (): ReactElement => {
 	};
 	return (
 		<>
-			<Grid container direction="column" className={classes.box} item lg={6}>
+			<Grid container direction="column" className={classes.box} item lg={5}>
 				<Grid item
 					container
 					direction="column"
@@ -75,14 +72,16 @@ const InformationCard: React.FC = (): ReactElement => {
 					<Card className={classes.card}>
 						<CardContent>
 							<Typography variant="h1" className={classes.title} color="textSecondary" gutterBottom>
-								You've been taking Ludwig to space for {<StopWatch />}
+								You've been taking Ludwig to space for {seconds} seconds.
 							</Typography>
 							<Typography variant="body2" component="p" className={classes.subTitle} gutterBottom>
 								<span style={{fontWeight: "bold"}}> Currently Playing: </span>{songList[audioState.currentlyPlaying].title} by {songList[audioState.currentlyPlaying].artist}
 							</Typography>
 						</CardContent>
 						<CardActions>
-							<Button size="small" onClick={changeSong}>Skip Song</Button>
+							<Button size="medium" color="primary" onClick={changeSong}>Skip Song</Button>
+							<Button size="medium" color="primary">Share</Button>
+							<Button size="medium" color="primary">Credits</Button>
 						</CardActions>
 					</Card>
 				</Grid>

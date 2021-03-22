@@ -7,6 +7,7 @@ import { genRandomNumber } from "../src/Util";
 import Loading from "../components/Loading";
 import InformationCard from "../components/Information";
 import Audio from "../components/Audio";
+import { GetServerSideProps } from "next";
 // import Typography from ""
 
 export enum ModeTypes {
@@ -43,15 +44,17 @@ const style = makeStyles(() => ({
 		// alignSelf: "center",
 	}
 }));
+  
 const IndexPage: React.FC = () => {
 	const classes = style();
 	const [isLoading, setLoading] = useState<boolean>(true);
 	const [mode, setMode] = useState<ModeTypes>(ModeTypes.NoGifs);
 	setTimeout(() => {
 		setLoading(false);
-	}, 2000);
+	}, 3000);
 	return (
 		<>
+			{/* <Loading /> */}
 			{
 				isLoading ? <Loading /> :
 					<Layout title={`🚀 Take Ludwig to ${titlePlanets[genRandomNumber(0, titlePlanets.length)]}!`} className={classes.root}>
