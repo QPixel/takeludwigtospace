@@ -10,6 +10,7 @@ import { CssBaseline } from "@material-ui/core";
 import React from "react";
 import { genRandomNumber } from "../src/Util";
 import Loading from "../components/Loading";
+import "fontsource-roboto";
 // import "./"
 
 export const cache = createCache({ key: "css", prepend: true });

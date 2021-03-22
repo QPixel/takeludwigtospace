@@ -12,7 +12,7 @@ const Layout: React.FC<Props> = ({
 	title = "Take Ludwig to the moon",
 	className,
 }: Props) => (
-	<div>
+	<>
 		<Head>
 			<title>{title}</title>
 			<meta charSet="utf-8" />
@@ -22,7 +22,7 @@ const Layout: React.FC<Props> = ({
 			/>
 		</Head>
 		<div className={className}>{children}</div>
-	</div>
+	</>
 );
 
 export default Layout;

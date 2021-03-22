@@ -5,6 +5,8 @@ import Background from "../components/Canvas/Background";
 import RocketShip from "../components/RocketShip";
 import { genRandomNumber } from "../src/Util";
 import Loading from "../components/Loading";
+import InformationCard from "../components/Information";
+import Audio from "../components/Audio";
 // import Typography from ""
 
 export enum ModeTypes {
@@ -25,7 +27,7 @@ export const titlePlanets: string[] = [
 ];
 const style = makeStyles(() => ({
 	root: {
-		display: "grid",
+		display: "flex",
 		flexDirection: "column",
 		justifyContent: "center",
 		alignItems: "center",
@@ -52,10 +54,11 @@ const IndexPage: React.FC = () => {
 		<>
 			{
 				isLoading ? <Loading /> :
-					<Layout title={`🚀 Take ludwig to ${titlePlanets[genRandomNumber(0, titlePlanets.length)]}!`} className={classes.root}>
-						<Typography variant="h1" className={classes.title}>🚀 Coming Soon 🚀</Typography>
+					<Layout title={`🚀 Take Ludwig to ${titlePlanets[genRandomNumber(0, titlePlanets.length)]}!`} className={classes.root}>
+						{/* <InformationCard /> */}
 						<RocketShip mode={mode} />
 						<Background mode={mode}></Background>
+						<Audio />
 					</Layout>
 
 			}

@@ -28,7 +28,7 @@ const useStyles = makeStyles(() => ({
 		// "#000000",
 		"linear-gradient(to left top, #030409, #0a0c15, #0f131e, #121827, #131d30, #121e32, #121f33, #112035, #0f1d2f, #0e1a28, #0e1722, #0c141c)",
 		height: "100%",
-		zIndex: -3,
+		zIndex: -10,
 		position: "absolute",
 		width: "100%",
 	},
@@ -136,7 +136,7 @@ const Background: React.FC<BackgroundProps> = ({
 	const classes = useStyles();
 	return (
 		<div className={classes.root}>
-			{/* <Stars /> */}
+			<Stars />
 			{mode === ModeTypes.NoEmotes ? (
 				<></>
 			) : (

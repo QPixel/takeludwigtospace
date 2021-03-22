@@ -20,14 +20,13 @@ const useStyles = makeStyles({
 		alignContent: "center",
 		display: "table-cell",
 		verticalAlign: "middle",
-		position: "absolute",
-		top: "200px",
-		left: "220px",
 	},
 	rocketship: {
 		display: "block !important",
 		width: "282.8px",
 		transformOrigin: "center center",
+		marginLeft: 200,
+		marginTop: 75
 	},
 	face: {
 		position: "absolute",
