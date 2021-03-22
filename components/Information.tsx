@@ -18,7 +18,8 @@ const useStyles = makeStyles((theme) => ({
 		},
 		[theme.breakpoints.down("md")]: {
 			position: "fixed",
-			bottom: "1px"
+			bottom: "1px",
+			height: "28%"
 		}
 	},
 	title: {
