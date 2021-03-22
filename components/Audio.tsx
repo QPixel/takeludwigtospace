@@ -1,17 +1,32 @@
-import React, { ReactElement, useRef } from "react";
+import React, { ReactElement, useRef, useState } from "react";
+import ReactPlayer from "react-player";
 import { genRandomNumber } from "../src/Util";
 
+export interface ISong {
+	src: string;
+	title: string;
+	artist?: string;
+}
 
-const songList: string[] = [
-	"/audio/sunshine.mp3",
-	"/audio/mogul.mp3"
-];
+export interface AudioState {
+	currentlyPlaying: number;
+	upNext: number;
+}
 
-const Audio: React.FC = (): ReactElement => {	
-	const audioRef = useRef<HTMLAudioElement>(null);
-	const audioSrc = songList[genRandomNumber(0, songList.length)];
+interface AudioProps {
+	onEnded: () => void;
+	audioState: AudioState;
+	songList: ISong[]
+}
+
+const Audio: React.FC<AudioProps> = ({onEnded, audioState, songList}: AudioProps): ReactElement => {	
+
 	return (
-		<audio ref={audioRef} src={audioSrc} autoPlay/>
+		<ReactPlayer onEnded={onEnded} url={songList[audioState.currentlyPlaying].src} playing config={{
+			file: {
+				forceAudio: true
+			}
+		}}/>
 	);
 };
 
