@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core";
-import React, { ReactElement } from "react";
+import React, { ReactElement, useEffect } from "react";
 import { genRandomNumber } from "../src/Util";
 
 const useStyles = makeStyles(() => ({
@@ -33,11 +33,15 @@ const loadingPhrases = [
 
 const Loading: React.FC = (): ReactElement => {
 	const classes = useStyles();
+	let phrase = loadingPhrases[genRandomNumber(0, loadingPhrases.length)];
+	useEffect(() => {
+		phrase = loadingPhrases[genRandomNumber(0, loadingPhrases.length)];
+	}, []);
 	return (
 		<div className={classes.root}>
 			<div className={classes.loadingContainer}>
 				<h1 style={{marginBottom: "1px"}}>Loading...</h1>
-				<h3>{loadingPhrases[genRandomNumber(0, loadingPhrases.length)]}</h3>
+				<h3>{phrase}</h3>
 			</div>
 
 		</div>

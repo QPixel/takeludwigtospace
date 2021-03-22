@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import Head from "next/head";
+import { Grid } from "@material-ui/core";
 
 type Props = {
 	children?: ReactNode;
@@ -21,7 +22,7 @@ const Layout: React.FC<Props> = ({
 				content="initial-scale=1.0, width=device-width"
 			/>
 		</Head>
-		<div className={className}>{children}</div>
+		<Grid container direction="row" className={className}>{children}</Grid>
 	</>
 );
 

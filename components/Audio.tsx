@@ -1,3 +1,4 @@
+import { CssBaselineProps } from "@material-ui/core";
 import React, { ReactElement, useRef, useState } from "react";
 import ReactPlayer from "react-player";
 import { genRandomNumber } from "../src/Util";
@@ -21,9 +22,13 @@ interface AudioProps {
 }
 
 const Audio: React.FC<AudioProps> = ({onEnded, audioState, songList}: AudioProps): ReactElement => {	
+	const style: React.CSSProperties = {
+		width: 0,
+		height: 0
+	};
 
 	return (
-		<ReactPlayer onEnded={onEnded} url={songList[audioState.currentlyPlaying].src} playing config={{
+		<ReactPlayer onEnded={onEnded} width="0" height="0" url={songList[audioState.currentlyPlaying].src} playing config={{
 			file: {
 				forceAudio: true
 			}

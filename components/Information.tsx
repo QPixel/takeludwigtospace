@@ -10,10 +10,7 @@ const useStyles = makeStyles((theme) => ({
 		marginTop: "auto",
 		backgroundColor: "white",
 	},
-	box: {
-		flexGrow: 1,
-		marginTop: 500,
-		marginLeft: 540,
+	grid: {
 		color: "white",
 		zIndex: 2
 	},
@@ -63,7 +60,7 @@ const InformationCard: React.FC = (): ReactElement => {
 	};
 	return (
 		<>
-			<Grid container direction="column" className={classes.box} item lg={5}>
+			<Grid container direction="column" className={classes.grid} item lg={5}>
 				<Grid item
 					container
 					direction="column"
@@ -85,8 +82,8 @@ const InformationCard: React.FC = (): ReactElement => {
 						</CardActions>
 					</Card>
 				</Grid>
+				<Audio onEnded={changeSong} audioState={audioState} songList={songList} />
 			</Grid> 
-			<Audio onEnded={changeSong} audioState={audioState} songList={songList} />
 		</>
 	);
 	// return <Card className={classes.root}></Card>;

@@ -9,24 +9,11 @@ export interface RocketShipProps {
 
 const useStyles = makeStyles({
 	root: {
-		height: "100%",
-		width: "50%",
-		display: "table",
-		position: "absolute",
-		top: 0,
-		left: 0,
-	},
-	rocketshipoutside: {
-		alignContent: "center",
-		display: "table-cell",
-		verticalAlign: "middle",
+		alignSelf: "start",
+		marginLeft: "200px"
 	},
 	rocketship: {
-		display: "block !important",
-		width: "282.8px",
-		transformOrigin: "center center",
-		marginLeft: 200,
-		marginTop: 75
+
 	},
 	face: {
 		position: "absolute",
@@ -41,7 +28,7 @@ const RocketShip: React.FC<RocketShipProps> = ({
 	const classes = useStyles();
 	return (
 		<Box className={classes.root}>
-			<div id="rocket" className={classes.rocketshipoutside}>
+			<div id="rocket">
 				<motion.div
 					animate={{
 						x: [0, 0.5, 2, 1, 0.4, 4, 0, 8, 2.5, 3],
