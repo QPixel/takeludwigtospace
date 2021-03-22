@@ -2,7 +2,7 @@ import { Button, Card, CardActions, CardContent, Grid, makeStyles, Typography } 
 import React, { ReactElement, useEffect, useState } from "react";
 import Audio, { ISong, AudioState } from "./Audio";
 import songList from "./SongList";
-import {StopWatch} from "./Timer";
+
 const useStyles = makeStyles((theme) => ({
 	root: {
 	},
@@ -68,7 +68,7 @@ const InformationCard: React.FC = (): ReactElement => {
 	};
 	return (
 		<>
-			<Card className={classes.card}  md={3}>
+			<Card className={classes.card}>
 				<CardContent>
 					<Typography variant="h1" className={classes.title} color="textSecondary" gutterBottom>
 								You've been taking Ludwig to space for {seconds} seconds.
