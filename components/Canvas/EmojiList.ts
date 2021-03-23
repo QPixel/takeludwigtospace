@@ -81,7 +81,77 @@ const RegularEmojis: ReadonlyArray<IEmoji> = [
 		height: 112
 	},
 	{
+		path: "/emoji/HYPERS.png",
+		timePerFrame: 0,
+		numberOfFrames: 0,
+		width: 112,
+		height: 112
+	},
+	{
+		path: "/emoji/ludwigBanger.png",
+		timePerFrame: 0,
+		numberOfFrames: 0,
+		width: 112,
+		height: 112
+	},
+	{
+		path: "/emoji/ludwigCroc.png",
+		timePerFrame: 0,
+		numberOfFrames: 0,
+		width: 112,
+		height: 112
+	},
+	{
+		path: "/emoji/ludwigMogul.png",
+		timePerFrame: 0,
+		numberOfFrames: 0,
+		width: 112,
+		height: 112
+	},
+	{
+		path: "/emoji/ludwigPrime.png",
+		timePerFrame: 0,
+		numberOfFrames: 0,
+		width: 112,
+		height: 112
+	},
+	{
+		path: "/emoji/LULW.png",
+		timePerFrame: 0,
+		numberOfFrames: 0,
+		width: 112,
+		height: 112
+	},
+	{
+		path: "/emoji/PogChamp.png",
+		timePerFrame: 0,
+		numberOfFrames: 0,
+		width: 112,
+		height: 112
+	},
+	{
+		path: "/emoji/POGGERS.png",
+		timePerFrame: 0,
+		numberOfFrames: 0,
+		width: 112,
+		height: 112
+	},
+	{
+		path: "/emoji/POGGIES.png",
+		timePerFrame: 0,
+		numberOfFrames: 0,
+		width: 112,
+		height: 112
+	},
+	{
 		path: "/emoji/ludwig7.png",
+		timePerFrame: 0,
+		numberOfFrames: 0,
+		width: 112,
+		height: 112
+	},
+	{
+		path: "/emoji/PogU.png",
 		timePerFrame: 0,
 		numberOfFrames: 0,
 		width: 112,

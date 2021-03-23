@@ -29,6 +29,12 @@ const loadingPhrases = [
 	"shitty code !== bad product",
 	"Sniper got your tongue?",
 	"Made in less than a week",
+	"Longer load time = better website",
+	"Fastest loading website",
+	"hold the line",
+	"BOI'S",
+	"The Plan is Simple!",
+	"ludwig7"
 ];
 
 const Loading: React.FC = (): ReactElement => {
