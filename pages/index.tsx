@@ -1,4 +1,4 @@
-import { Fade, makeStyles, Typography } from "@material-ui/core";
+import { makeStyles, } from "@material-ui/core";
 import React, { useState } from "react";
 import Layout from "../components/Layout";
 import Background from "../components/Canvas/Background";
@@ -6,8 +6,6 @@ import RocketShip from "../components/RocketShip";
 import { genRandomNumber } from "../src/Util";
 import Loading from "../components/Loading";
 import InformationCard from "../components/Information";
-import Audio from "../components/Audio";
-import { GetServerSideProps } from "next";
 // import Typography from ""
 
 export enum ModeTypes {
