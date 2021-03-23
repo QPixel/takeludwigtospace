@@ -57,7 +57,7 @@ const RocketShip: React.FC<RocketShipProps> = ({
 				>
 					{/* <div className={classes.rocketship}> */}
 					<div className={classes.face}>
-						<Image width={112} height={112} src="/face.png"></Image>
+						<Image priority={true} width={112} height={112} src="/face.png"></Image>
 					</div>
 
 					<svg

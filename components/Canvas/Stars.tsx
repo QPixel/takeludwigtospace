@@ -150,7 +150,18 @@ const Stars: React.FC = (): ReactElement => {
 				) {
 					recyleStar(star);
 				}
+
 			});
+			if (stars.length < 700) {
+				const newcount = StarCount - stars.length;
+				for (let i = 0; i < newcount; i++) {
+					stars.push({
+						x: 0,
+						y: 0,
+						z: StarMinScale + Math.random() * (1 - StarMinScale),
+					});	
+				} 
+			}
 		};
 		
 		const render = () => {
