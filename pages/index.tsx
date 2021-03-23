@@ -1,4 +1,4 @@
-import { makeStyles, Typography } from "@material-ui/core";
+import { Fade, makeStyles, Typography } from "@material-ui/core";
 import React, { useState } from "react";
 import Layout from "../components/Layout";
 import Background from "../components/Canvas/Background";
@@ -15,9 +15,6 @@ export enum ModeTypes {
 	NoEmotes,
 	NoGifs,
 	NyanLud,
-	LoPunny,
-	NitroLud,
-	OmegaLu
 }
 export const titlePlanets: string[] = [
 	"Space",
@@ -54,16 +51,15 @@ const IndexPage: React.FC = () => {
 	}, 3000);
 	return (
 		<>
-			{/* <Loading /> */}
 			{
-				isLoading ? <Loading /> :
-					<Layout title={`🚀 Take Ludwig to ${titlePlanets[genRandomNumber(0, titlePlanets.length -1)]}!`} className={classes.root}>
-						<RocketShip mode={mode} />
-						<InformationCard />
-						<Background mode={mode}></Background>
-					</Layout>
-
+				isLoading && (<Loading />)
 			}
+			<Layout title={`🚀 Take Ludwig to ${titlePlanets[genRandomNumber(0, titlePlanets.length -1)]}!`} className={classes.root}>
+				<RocketShip mode={mode} />
+				<InformationCard />
+				<Background mode={mode}></Background>
+			</Layout>
+
 		</>
 	);
 };

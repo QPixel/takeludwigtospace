@@ -5,6 +5,7 @@ import { genRandomNumber } from "../src/Util";
 const useStyles = makeStyles(() => ({
 	root: {
 		width: "100%",
+		zIndex: 50,
 		height: "100%",
 		paddingBottom: 1200,
 		color: "white",
@@ -12,6 +13,10 @@ const useStyles = makeStyles(() => ({
 		justifyContent: "center",
 		alignItems: "center",
 		textAlign: "center",
+		position: "absolute",
+		top: 0,
+		left:  0,
+		background: "#000",
 		backgroundImage: 
 			"linear-gradient(to left top, #030409, #0a0c15, #0f131e, #121827, #131d30, #121e32, #121f33, #112035, #0f1d2f, #0e1a28, #0e1722, #0c141c)",
 	},
@@ -40,7 +45,7 @@ const loadingPhrases = [
 const Loading: React.FC = (): ReactElement => {
 	const classes = useStyles();
 	const phrase = loadingPhrases[genRandomNumber(0, loadingPhrases.length - 1)];
-	
+
 	return (
 		<div className={classes.root}>
 			<div className={classes.loadingContainer}>
