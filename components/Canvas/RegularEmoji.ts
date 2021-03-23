@@ -19,8 +19,8 @@ export default class RegularEmoji {
 	constructor(data: IRegularEmoji) {
 		this.ctx = data.ctx;
 		this.image.src = data.emoji.path;
-		this.height = 40 + (Math.random() * 6);
-		this.width = 40 + (Math.random() * 6);
+		this.height = 40 + Math.floor(Math.random() * 7);
+		this.width = 40 + Math.floor(Math.random() * 7);
 		
 		this.speed = Math.random() * 3.5;
 		this.x = Math.random() * 2000;

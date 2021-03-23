@@ -57,7 +57,7 @@ const IndexPage: React.FC = () => {
 			{/* <Loading /> */}
 			{
 				isLoading ? <Loading /> :
-					<Layout title={`🚀 Take Ludwig to ${titlePlanets[genRandomNumber(0, titlePlanets.length)]}!`} className={classes.root}>
+					<Layout title={`🚀 Take Ludwig to ${titlePlanets[genRandomNumber(0, titlePlanets.length -1)]}!`} className={classes.root}>
 						<RocketShip mode={mode} />
 						<InformationCard />
 						<Background mode={mode}></Background>

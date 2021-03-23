@@ -51,7 +51,7 @@ const setupEmojis = (
 					width,
 					height,
 					ctx,
-					emoji: list[genRandomNumber(0, RegularEmojis.length)],
+					emoji: list[genRandomNumber(0, RegularEmojis.length - 1)],
 				})
 			);
 		}
@@ -62,7 +62,7 @@ const setupEmojis = (
 					width,
 					height,
 					ctx,
-					emoji: list[genRandomNumber(0, GifEmojis.length)],
+					emoji: list[genRandomNumber(0, GifEmojis.length - 1)],
 				})
 			);
 		}
@@ -96,7 +96,7 @@ const EmojiComponent: React.FC<BackgroundProps> = ({
 								height: current.height,
 								emoji:
 										GifEmojis[
-											genRandomNumber(0, GifEmojis.length)
+											genRandomNumber(0, GifEmojis.length - 1)
 										],
 								ctx,
 							})
@@ -107,7 +107,7 @@ const EmojiComponent: React.FC<BackgroundProps> = ({
 										RegularEmojis[
 											genRandomNumber(
 												0,
-												RegularEmojis.length
+												RegularEmojis.length - 1
 											)
 										],
 								ctx,

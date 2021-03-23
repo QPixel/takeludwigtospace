@@ -46,7 +46,7 @@ const RocketShip: React.FC<RocketShipProps> = ({
 					}}
 					transition={{
 						repeatType: "mirror",
-						repeatDelay: 0,
+						repeatDelay: 0.2,
 						repeat: Infinity,
 						type: "tween",
 						ease: "easeInOut",
