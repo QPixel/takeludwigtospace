@@ -2,7 +2,7 @@ import { Box, makeStyles } from "@material-ui/core";
 import { motion } from "framer-motion";
 import React, { ReactElement } from "react";
 import { ModeTypes } from "../pages";
-import Image from "next/image";
+import imamge from "next/image";
 export interface RocketShipProps {
 	mode: ModeTypes;
 }
@@ -57,7 +57,7 @@ const RocketShip: React.FC<RocketShipProps> = ({
 				>
 					{/* <div className={classes.rocketship}> */}
 					<div className={classes.face}>
-						<Image priority={true} width={112} height={112} src="/face.png"></Image>
+						<img width={112} height={112} src="/face.png"></img>
 					</div>
 
 					<svg
