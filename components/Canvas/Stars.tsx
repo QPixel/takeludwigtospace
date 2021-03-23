@@ -8,7 +8,7 @@ const useStyles = makeStyles(() => ({
 	root: {
 		width: "100%",
 		height: "100%",
-		zIndex: -5,
+		zIndex: -1,
 		position: "absolute",
 	},
 }));

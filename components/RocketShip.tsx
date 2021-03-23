@@ -18,7 +18,8 @@ const useStyles = makeStyles((theme) => ({
 		[theme.breakpoints.down("md")]: {
 			marginLeft: "50px",
 			marginTop: "20px",
-		}
+		},
+		zIndex: 3
 	},
 	rocketship: {
 
