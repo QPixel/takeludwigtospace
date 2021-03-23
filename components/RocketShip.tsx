@@ -2,39 +2,35 @@ import { Box, makeStyles } from "@material-ui/core";
 import { motion } from "framer-motion";
 import React, { ReactElement } from "react";
 import { ModeTypes } from "../pages";
-import Image from "next/image";
+import imamge from "next/image";
 export interface RocketShipProps {
 	mode: ModeTypes;
 }
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
 	root: {
-		height: "100%",
-		width: "50%",
-		display: "table",
-		position: "absolute",
-		top: 0,
-		left: 0,
-	},
-	rocketshipoutside: {
-		alignContent: "center",
-		display: "table-cell",
-		verticalAlign: "middle",
-		position: "absolute",
-		top: "200px",
-		left: "220px",
+		alignSelf: "start",
+		height: "680px",
+		[theme.breakpoints.up("lg")]: {
+			marginLeft: "200px",
+			marginTop: "120px",
+		},
+		[theme.breakpoints.down("md")]: {
+			marginLeft: "50px",
+			marginTop: "20px",
+		},
+		zIndex: 3
 	},
 	rocketship: {
-		display: "block !important",
-		width: "282.8px",
-		transformOrigin: "center center",
+
 	},
 	face: {
 		position: "absolute",
 		top: "75px",
 		left: "90px",
 	},
-});
+	
+}));
 
 const RocketShip: React.FC<RocketShipProps> = ({
 	mode,
@@ -42,7 +38,7 @@ const RocketShip: React.FC<RocketShipProps> = ({
 	const classes = useStyles();
 	return (
 		<Box className={classes.root}>
-			<div id="rocket" className={classes.rocketshipoutside}>
+			<div id="rocket">
 				<motion.div
 					animate={{
 						x: [0, 0.5, 2, 1, 0.4, 4, 0, 8, 2.5, 3],
@@ -61,7 +57,7 @@ const RocketShip: React.FC<RocketShipProps> = ({
 				>
 					{/* <div className={classes.rocketship}> */}
 					<div className={classes.face}>
-						<Image width={112} height={112} src="/face.png"></Image>
+						<img width={112} height={112} src="/face.png"></img>
 					</div>
 
 					<svg

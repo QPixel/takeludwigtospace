@@ -1,10 +1,11 @@
-import { makeStyles, Typography } from "@material-ui/core";
+import { makeStyles, } from "@material-ui/core";
 import React, { useState } from "react";
 import Layout from "../components/Layout";
 import Background from "../components/Canvas/Background";
 import RocketShip from "../components/RocketShip";
 import { genRandomNumber } from "../src/Util";
 import Loading from "../components/Loading";
+import InformationCard from "../components/Information";
 // import Typography from ""
 
 export enum ModeTypes {
@@ -12,9 +13,6 @@ export enum ModeTypes {
 	NoEmotes,
 	NoGifs,
 	NyanLud,
-	LoPunny,
-	NitroLud,
-	OmegaLu
 }
 export const titlePlanets: string[] = [
 	"Space",
@@ -25,7 +23,7 @@ export const titlePlanets: string[] = [
 ];
 const style = makeStyles(() => ({
 	root: {
-		display: "grid",
+		display: "flex",
 		flexDirection: "column",
 		justifyContent: "center",
 		alignItems: "center",
@@ -41,24 +39,25 @@ const style = makeStyles(() => ({
 		// alignSelf: "center",
 	}
 }));
+  
 const IndexPage: React.FC = () => {
 	const classes = style();
 	const [isLoading, setLoading] = useState<boolean>(true);
 	const [mode, setMode] = useState<ModeTypes>(ModeTypes.NoGifs);
 	setTimeout(() => {
 		setLoading(false);
-	}, 2000);
+	}, 3000);
 	return (
 		<>
 			{
-				isLoading ? <Loading /> :
-					<Layout title={`🚀 Take ludwig to ${titlePlanets[genRandomNumber(0, titlePlanets.length)]}!`} className={classes.root}>
-						<Typography variant="h1" className={classes.title}>🚀 Coming Soon 🚀</Typography>
-						<RocketShip mode={mode} />
-						<Background mode={mode}></Background>
-					</Layout>
-
+				isLoading && (<Loading />)
 			}
+			<Layout title={`🚀 Take Ludwig to ${titlePlanets[genRandomNumber(0, titlePlanets.length -1)]}!`} className={classes.root}>
+				<RocketShip mode={mode} />
+				<InformationCard />
+				<Background mode={mode}></Background>
+			</Layout>
+
 		</>
 	);
 };

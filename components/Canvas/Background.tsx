@@ -15,7 +15,6 @@ const useStyles = makeStyles(() => ({
 		top: 0,
 		left: 0,
 		position: "absolute",
-		zIndex: -50,
 		width: "100%",
 		height: "100%",
 	},
@@ -28,7 +27,7 @@ const useStyles = makeStyles(() => ({
 		// "#000000",
 		"linear-gradient(to left top, #030409, #0a0c15, #0f131e, #121827, #131d30, #121e32, #121f33, #112035, #0f1d2f, #0e1a28, #0e1722, #0c141c)",
 		height: "100%",
-		zIndex: -3,
+		zIndex: -10,
 		position: "absolute",
 		width: "100%",
 	},
@@ -51,7 +50,7 @@ const setupEmojis = (
 					width,
 					height,
 					ctx,
-					emoji: list[genRandomNumber(0, RegularEmojis.length)],
+					emoji: list[genRandomNumber(0, RegularEmojis.length - 1)],
 				})
 			);
 		}
@@ -62,7 +61,7 @@ const setupEmojis = (
 					width,
 					height,
 					ctx,
-					emoji: list[genRandomNumber(0, GifEmojis.length)],
+					emoji: list[genRandomNumber(0, GifEmojis.length - 1)],
 				})
 			);
 		}
@@ -87,10 +86,8 @@ const EmojiComponent: React.FC<BackgroundProps> = ({
 			emojis.forEach((emoji, index) => {
 				emoji.update();
 				// console.log(emoji.id);
-				if (emoji.y > 1500) {
-					setTimeout(() => {
-						emojis.splice(index, 1);
-					}, 30);
+				if (emoji.y > 1300) {
+					emojis.splice(index, 1);
 					emojis.push(
 						mode === ModeTypes.Normal
 							? new AniamtedEmoji({
@@ -98,7 +95,7 @@ const EmojiComponent: React.FC<BackgroundProps> = ({
 								height: current.height,
 								emoji:
 										GifEmojis[
-											genRandomNumber(0, GifEmojis.length)
+											genRandomNumber(0, GifEmojis.length - 1)
 										],
 								ctx,
 							})
@@ -109,7 +106,7 @@ const EmojiComponent: React.FC<BackgroundProps> = ({
 										RegularEmojis[
 											genRandomNumber(
 												0,
-												RegularEmojis.length
+												RegularEmojis.length - 1
 											)
 										],
 								ctx,
@@ -117,8 +114,8 @@ const EmojiComponent: React.FC<BackgroundProps> = ({
 					);
 				}
 			});
+			// console.log(emojis.length);
 		};
-
 		setupEmojis(current.width, current.height, ctx, emojilist, mode);
 		animate();
 
@@ -126,7 +123,7 @@ const EmojiComponent: React.FC<BackgroundProps> = ({
 			current.width = window.innerWidth;
 			current.height = window.innerHeight;
 		});
-	});
+	}, []);
 	return <canvas ref={emojiCanvasRef} className={classes.emojis} />;
 };
 
@@ -136,7 +133,7 @@ const Background: React.FC<BackgroundProps> = ({
 	const classes = useStyles();
 	return (
 		<div className={classes.root}>
-			{/* <Stars /> */}
+			<Stars />
 			{mode === ModeTypes.NoEmotes ? (
 				<></>
 			) : (
