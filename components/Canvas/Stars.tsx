@@ -24,12 +24,10 @@ const StarSize = 3,
 	StarMinScale = 0.2,
 	OverflowThreshold = 50;
 const velocity = { x: 0, y: 0, tx: 0, ty: 0, z: 0.0005 };
-let scale = 1,
+let scale = 0.6,
 	width: number,
 	height: number;
 
-let pointerX: number | null, pointerY: number | null;
-const touchInput = false;
 
 const placeStar = (star: Star): void => {
 	star.x = Math.random() * width;
@@ -86,25 +84,7 @@ const recyleStar = (star: Star) => {
 };
 
 
-const movePointer = (x: number, y: number) => {
-	if (typeof pointerX === "number" && typeof pointerY === "number") {
-		const ox = x - pointerX,
-			oy = y - pointerY;
-		velocity.tx = velocity.tx + ( ox / 8*scale ) * ( touchInput ? 1 : -1 );
-		velocity.ty = velocity.ty + ( oy / 8*scale ) * ( touchInput ? 1 : -1 );
-	}
-	
-	pointerX = x;
-	pointerY = y;
-};
-const onMouseMove = (event: MouseEvent) => {
-  
-	movePointer( event.clientX, event.clientY );
-};
-const onMouseLeave = () => {
-	pointerX = null;
-	pointerY = null;
-};
+
 // Star code adapted for react from https://codepen.io/hakimel/pen/bzrZGo
 // If you want to pr this code to make it better, i'm totally open
 const Stars: React.FC = (): ReactElement => {
@@ -115,7 +95,7 @@ const Stars: React.FC = (): ReactElement => {
 		const ctx = canvas?.getContext("2d");
 		if (!ctx || !canvas) return;
 		const stars: Star[] = [];
-		const StarCount = (window.innerWidth + window.innerHeight / 8);
+		const StarCount = (window.innerWidth + window.innerHeight / 8)* 1.2;
 		console.log(StarCount);
 		const resize = () => {
 			scale = window.devicePixelRatio || 1;
@@ -176,7 +156,7 @@ const Stars: React.FC = (): ReactElement => {
 				ctx.beginPath();
 				ctx.moveTo(star.x, star.y);
 				
-				let tailX = velocity.x * 2, tailY = velocity.y * 2;
+				let tailX = velocity.x * 0.8, tailY = velocity.y;
 
 
 				// ctx.stroke won't work on an invisible line
@@ -205,10 +185,7 @@ const Stars: React.FC = (): ReactElement => {
 				});
 			}
 		};
-		
 		window.onresize = resize;
-		document.onmouseleave = onMouseLeave;
-		canvas.onmousemove = onMouseMove;
 		generate();
 		resize();
 		step();
