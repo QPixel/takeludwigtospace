@@ -12,11 +12,6 @@ const songList: ISong[] = [
 		artist: "Sonic R"
 	},
 	{
-		src: "/audio/CANINE.mp3",
-		title: "CANINE",
-		artist: "Dojo"
-	},
-	{
 		src: "/audio/countwhat.mp3",
 		title: "Count What You Have Now",
 		artist: "Vantage"
@@ -35,6 +30,11 @@ const songList: ISong[] = [
 		src: "/audio/landing.mp3",
 		title: "We're Finally Landing",
 		artist: "HOME"
+	},
+	{
+		src: "/audio/CANINE.mp3",
+		title: "CANINE",
+		artist: "Dojo"
 	},
 ];
 
