@@ -110,6 +110,8 @@ const Credits: React.FC<CreditsProps> = ({onClose, open}: CreditsProps) => {
 				<DialogContent style={{height: 360}}>
 					<DialogContentText>
 						Original Idea from <a href="https://takeb1nzyto.space">Take B1nzy to Space</a>
+					</DialogContentText>
+					<DialogContentText>
 						Planets from <a href="https://www.vecteezy.com/free-vector/globe">Vecteezy</a>
 					</DialogContentText>
 					<Grid container className={classes.cardcontainer} spacing={2}>
