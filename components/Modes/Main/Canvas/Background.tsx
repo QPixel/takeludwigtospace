@@ -1,8 +1,8 @@
 import React, { ReactElement, useEffect, useRef } from "react";
-import { ModeTypes } from "../../pages";
+import { ModeTypes } from "../../../../pages";
 import { makeStyles } from "@material-ui/core";
-import { genRandomNumber } from "../../src/Util";
-import { IEmoji, GifEmojis, RegularEmojis } from "./EmojiList";
+import { genRandomNumber } from "../../../../src/Util";
+import { IEmoji, GifEmojis, RegularEmojis } from "../../shared/Canvas/EmojiList";
 import AniamtedEmoji from "./AnimatedEmojiV2";
 import RegularEmoji from "./RegularEmoji";
 import Stars from "./Stars";

@@ -1,4 +1,4 @@
-import { IEmoji } from "./EmojiList";
+import { IEmoji } from "../../shared/Canvas/EmojiList";
 
 interface IAnimatedEmoji {
 	width: number;

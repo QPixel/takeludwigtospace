@@ -1,11 +1,10 @@
 import { makeStyles, } from "@material-ui/core";
 import React, { useState } from "react";
 import Layout from "../components/Layout";
-import Background from "../components/Canvas/Background";
-import RocketShip from "../components/Modes/Main/RocketShip";
 import { genRandomNumber } from "../src/Util";
 import Loading from "../components/Overlay/Loading";
 import InformationCard from "../components/Overlay/Information";
+import ShowMode from "../components/ShowMode";
 // import Typography from ""
 
 export enum ModeTypes {
@@ -44,6 +43,10 @@ const IndexPage: React.FC = () => {
 	const classes = style();
 	const [isLoading, setLoading] = useState<boolean>(true);
 	const [mode, setMode] = useState<ModeTypes>(ModeTypes.NoGifs);
+
+	const handleSetMode = (newMode: ModeTypes) => {
+		setMode(newMode);
+	};
 	setTimeout(() => {
 		setLoading(false);
 	}, 3000);
@@ -53,9 +56,8 @@ const IndexPage: React.FC = () => {
 				isLoading && (<Loading />)
 			}
 			<Layout title={`🚀 Take Ludwig to ${titlePlanets[genRandomNumber(0, titlePlanets.length -1)]}!`} className={classes.root}>
-				<RocketShip mode={mode} />
-				<InformationCard />
-				<Background mode={mode}></Background>
+				<InformationCard setMode={handleSetMode} mode={mode}/>
+				<ShowMode mode={mode} />
 			</Layout>
 
 		</>

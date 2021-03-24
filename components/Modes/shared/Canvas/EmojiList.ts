@@ -42,13 +42,6 @@ const GifEmojis: ReadonlyArray<IEmoji> = [
 		width: 784,
 		height: 112,
 	},
-	{
-		path: "/emoji/blobDance.png",
-		timePerFrame: 14,
-		numberOfFrames: 80,
-		width: 8960,
-		height: 112,
-	},
 ];
 
 const RegularEmojis: ReadonlyArray<IEmoji> = [

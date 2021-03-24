@@ -1,5 +1,6 @@
 import { Button, Card, CardActions, CardContent, Grid, makeStyles, Typography } from "@material-ui/core";
 import React, { ReactElement, useEffect, useState } from "react";
+import { ModeTypes } from "../../pages";
 import Audio, { ISong, AudioState } from "./Audio";
 import Credits from "./Credits";
 import songList from "./SongList";
@@ -33,8 +34,13 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
+interface InformationCardProps {
+	mode: ModeTypes;
+	setMode: (newMode: ModeTypes) => void;
+}
 
-const InformationCard: React.FC = (): ReactElement => {
+
+const InformationCard: React.FC<InformationCardProps> = ({mode, setMode}: InformationCardProps): ReactElement => {
 	const classes = useStyles();
 	const [seconds, setSeconds] = useState<string>("0");
 	const [audioState, setAudioState] = useState<AudioState>({

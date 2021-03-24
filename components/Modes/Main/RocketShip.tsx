@@ -3,9 +3,7 @@ import { motion } from "framer-motion";
 import React, { ReactElement } from "react";
 import { ModeTypes } from "../../../pages";
 import imamge from "next/image";
-export interface RocketShipProps {
-	mode: ModeTypes;
-}
+
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -32,9 +30,7 @@ const useStyles = makeStyles((theme) => ({
 	
 }));
 
-const RocketShip: React.FC<RocketShipProps> = ({
-	mode,
-}: RocketShipProps): ReactElement => {
+const RocketShip: React.FC = (): ReactElement => {
 	const classes = useStyles();
 	return (
 		<Box className={classes.root}>
