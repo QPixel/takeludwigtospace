@@ -10,7 +10,16 @@ const CreditsList: CreditData[] = [
 			github: "https://github.com/qpixel",
 			twitter: "https://twitter.com/qpixel"
 		}
-	}
+	},
+	{
+		name: "Ludwig",
+		image: "/images/ludwigface.jpg",
+		action: "Content Machine",
+		website: "https://ludwig.gg",
+		socials: {
+			twitter: "https://twitter.com/ludwigahgren"
+		}
+	},
 ];
 
 export default CreditsList;

@@ -9,12 +9,10 @@ interface CreditsProps {
 	open: boolean;
 	onClose: () => void;
 }
-type action = "Developer" | "Contributer";
-
 export interface CreditData {
 	name: string;
 	image?: string;
-	action: action;
+	action: string;
 	website?: string;
 	socials: {
 		github?: string;
