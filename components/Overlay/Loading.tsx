@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
-import React, { ReactElement, useEffect } from "react";
-import { genRandomNumber } from "../src/Util";
+import React, { ReactElement } from "react";
+import { genRandomNumber } from "../../src/Util";
 
 const useStyles = makeStyles(() => ({
 	root: {

@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
 	card: {
 		marginTop: "auto",
 		backgroundColor: "white",
-		zIndex: 2,
+		zIndex: 4,
 		[theme.breakpoints.up("lg")]: {
 			position: "fixed",
 			right: "8rem",

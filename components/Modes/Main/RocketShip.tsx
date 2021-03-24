@@ -1,7 +1,7 @@
 import { Box, makeStyles } from "@material-ui/core";
 import { motion } from "framer-motion";
 import React, { ReactElement } from "react";
-import { ModeTypes } from "../pages";
+import { ModeTypes } from "../../../pages";
 import imamge from "next/image";
 export interface RocketShipProps {
 	mode: ModeTypes;

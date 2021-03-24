@@ -1,7 +1,7 @@
 import { CssBaselineProps } from "@material-ui/core";
 import React, { ReactElement, useRef, useState } from "react";
 import ReactPlayer from "react-player";
-import { genRandomNumber } from "../src/Util";
+import { genRandomNumber } from "../../src/Util";
 
 export interface ISong {
 	src: string;
