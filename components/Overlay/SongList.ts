@@ -2,14 +2,14 @@ import { ISong } from "./Audio";
 
 const songList: ISong[] = [
 	{
-		src: "/audio/mogul.mp3",
-		title: "MOGUL",
-		artist: "Saint Marshall (Inspired by Ludwig Ahgren & Jonathan Figoli)"
-	},
-	{
 		src: "/audio/sunshine.mp3",
 		title: "Can you feel the sunshine?",
 		artist: "Sonic R"
+	},
+	{
+		src: "/audio/mogul.mp3",
+		title: "MOGUL",
+		artist: "Saint Marshall (Inspired by Ludwig Ahgren & Jonathan Figoli)"
 	},
 	{
 		src: "/audio/countwhat.mp3",
