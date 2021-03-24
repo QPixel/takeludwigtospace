@@ -29,7 +29,7 @@ const Audio: React.FC<AudioProps> = ({onEnded, audioState, songList, playing}: A
 	};
 
 	return (
-		<ReactPlayer onEnded={onEnded} width="0" height="0" url={songList[audioState.currentlyPlaying].src} playing={playing} config={{
+		<ReactPlayer onEnded={onEnded} width="0" height="0" url={songList[audioState.currentlyPlaying].src} playing={playing} volume={0.6} config={{
 			file: {
 				forceAudio: true
 			}
