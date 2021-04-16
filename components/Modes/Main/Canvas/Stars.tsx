@@ -13,6 +13,13 @@ const useStyles = makeStyles(() => ({
 	},
 }));
 
+
+interface StarWindow extends Window {
+	starList: Star[];
+}
+
+// eslint-disable-next-line no-var
+declare var window: StarWindow;
 interface Star {
 	x: number;
 	y: number;
@@ -185,6 +192,7 @@ const Stars: React.FC = (): ReactElement => {
 				});
 			}
 		};
+		window.starList = stars;
 		window.onresize = resize;
 		generate();
 		resize();
